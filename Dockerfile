@@ -12,6 +12,11 @@ RUN src=$(mktemp -d) && cd $src && wget -N http://nodejs.org/dist/node-latest.ta
 
 RUN npm install -g forever oauthd
 
+RUN cp /tmp/redis-stable/redis.conf /opt/redis.conf
+RUN sed -i -re"s/.*daemonize.*no/daemonize yes/g" /opt/redis.conf
+
+ADD ./startup.sh /opt/startup.sh
+
 EXPOSE 6284
-VOLUME ["/usr/local/lib/node_modules/oauthd"]
-CMD ["sh", "-c", "redis-server && oauthd config && oauthd start && tail -f /var/log/boot"]
+VOLUME ["/usr/local/lib/node_modules/oauthd", "/opt"]
+CMD ["/bin/bash", "/opt/startup.sh"]

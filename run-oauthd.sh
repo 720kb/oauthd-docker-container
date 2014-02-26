@@ -7,5 +7,6 @@ docker run \
 -d \
 -h oauthd \
 -p 127.0.0.1:6284:6284 \
--v $PWD/oauthd:/usr/local/lib/node_modules/oauthd \
+#-v $PWD/oauthd:/usr/local/lib/node_modules/oauthd \
+#-v $PWD/opt:/opt \
 wouldgo/oauthd
