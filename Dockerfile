@@ -14,9 +14,10 @@ RUN npm install -g forever oauthd
 
 RUN cp /tmp/redis-stable/redis.conf /opt/redis.conf
 RUN sed -i -re"s/.*daemonize.*no/daemonize yes/g" /opt/redis.conf
+RUN sed -i -re"s/staticsalt:.*'.+'.*/staticsalt: '$(cat /dev/urandom | tr -dc 'a-zA-Z0-9' | fold -w 32 | head -n 1)',/g" /usr/local/lib/node_modules/oauthd/config.js
+RUN sed -i -re"s/publicsalt:.*'.+'.*/publicsalt: '$(cat /dev/urandom | tr -dc 'a-zA-Z0-9' | fold -w 32 | head -n 1)',/g" /usr/local/lib/node_modules/oauthd/config.js
 
 ADD ./startup.sh /opt/startup.sh
 
 EXPOSE 6284
-VOLUME ["/usr/local/lib/node_modules/oauthd", "/opt"]
 CMD ["/bin/bash", "/opt/startup.sh"]

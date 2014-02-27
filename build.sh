@@ -1,4 +1,3 @@
-#mkdir -p oauthd
-#mkdir -p opt
+#!/bin/bash
 
 docker build -t wouldgo/oauthd .
