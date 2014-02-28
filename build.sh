@@ -1,3 +1,4 @@
 #!/bin/bash
 
-docker build -t wouldgo/oauthd .
+docker build -t wouldgo/oauthd . #-rm=true
+

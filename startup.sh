@@ -1,4 +1,7 @@
 #!/bin/bash
 
-redis-server /opt/redis.conf && oauthd start > /dev/null 2>&1 && tail -f /usr/local/lib/node_modules/oauthd/out.log
-
+redis-server /opt/redis.conf ; \
+sleep 5 ; \
+redis-cli ping ; \
+cd /opt/node_modules/oauthd ; \
+./oauthd.sh start ; tail -f out.log -f err.log
