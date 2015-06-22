@@ -9,7 +9,7 @@ sed -i -re"s/(.+)\/\/\s*bind:.+/\1bind: '0.0.0.0',/g" config.js && \
 sed -i -re"s/staticsalt:.*'.+'.*/staticsalt: '$(cat /dev/urandom | tr -dc 'a-zA-Z0-9' | fold -w 32 | head -n 1)',/g" config.js && \
 sed -i -re"s/publicsalt:.*'.+'.*/publicsalt: '$(cat /dev/urandom | tr -dc 'a-zA-Z0-9' | fold -w 32 | head -n 1)',/g" config.js && \
 
-sleep 5 && \
+sleep 1 && \
 redis-cli ping && \
 
 oauthd start
