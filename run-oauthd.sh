@@ -1,7 +1,7 @@
 #!/bin/bash
 
 PWD=$(pwd)
-DEFAULT_DOMAIN_NAME=$(hostname) && \
+DEFAULT_DOMAIN_NAME=localhost:6284 && \
 read -p "Specify the machine hostname [$DEFAULT_DOMAIN_NAME]: " DOMAIN_NAME && \
 DOMAIN_NAME=${DOMAIN_NAME:-$DEFAULT_DOMAIN_NAME} && \
 
