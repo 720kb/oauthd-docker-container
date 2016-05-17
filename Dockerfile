@@ -1,7 +1,7 @@
-FROM nodesource/jessie:0.12.7
+FROM nodesource/wheezy:5.9.0
 MAINTAINER Dario Andrei <wouldgo84@gmail.com>
 
-RUN npm install -g oauthd@1.0.0-beta.16 grunt-cli
+  RUN npm install -g oauthd@1.0.0-beta.23 grunt-cli
 
 ADD ./run/bootstrap.sh /opt/bootstrap.sh
 
